@@ -1,0 +1,5 @@
+package xap
+
+func Provider() {
+
+}
