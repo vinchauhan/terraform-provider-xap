@@ -50,6 +50,13 @@ func resourceSpaceCreate(d *schema.ResourceData, meta interface{}) error {
 	if session == nil {
 		return fmt.Errorf("Http Client is not instantiated")
 	}
+
+	//Collect resource parameters
+	name := d.Get("name").(string)
+	partitions := d.Get("partitions").(int)
+	backups := d.Get("backups").(bool)
+	requiresIsolation := d.Get("requiresIsolation").(bool)
+	sm := xapapi.NewSpaceManager(name, partitions, backups, requiresIsolation)
 	//var (name string
 	//	partitions int
 	//	backups bool
